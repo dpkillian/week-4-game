@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<!-- Bootstrap CSS Reference -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- jQuery Library -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Crystal Collector Game</title>
+  </head>
+
+
+  <!-- HTML PAGE LAYOUT / BootStrap -->
+
+  <body>
+
+    <!-- Creates Overall Grid --> 
+    <div class="container">
+
+    <!-- FIRST ROW: "Crystal Collector" heading and instructions, with game reset button --> 
+      <div class="jumbotron">
+        <h2>Crystal Collector</h2>
+        <p>Crystal Collector is a game of skill that requires quick thinking.  At the beginning of the game, a random number is chosen by the computer.  You job is to match that number by clicking on the crystals.  Each crystal is given a number, each time you click on a crystal it adds a number to your total.  You win by clicking on the right combination of cystals to match the the target number chosen by the computer.</p>
+        <p><a class="btn btn-primary btn-lg" id="reset" href="#" role="button">Start New Game</a></p>
+      </div>
+
+
+
+
+    <!-- SECOND ROW: "Crystal Collector" Row of Crystals --> 
+
+      <div class="row">
+
+          <!-- 1 of 1 Columns: Panel for Cystals -->
+          <div class="col-md-12">
+
+            <!-- "Wins" Box -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Crystals</h3>
+              </div>
+                <div id="crystals" class="panel-body">
+                  <div class="col-md-3">
+                    <a id="blue"><img class="img-responsive" src="./assets/images/blue.jpg"></a>
+                  </div>
+                  <div class="col-md-3">
+                    <a id="brown"><img class="img-responsive" src="./assets/images/brown.jpg"></a>
+                  </div>
+                  <div class="col-md-3">
+                    <a id="pink"><img class="img-responsive" src="./assets/images/pink.jpg"></a>
+                  </div>
+                  <div class="col-md-3">
+                    <a id="green"><img class="img-responsive" src="./assets/images/green.jpg"></a>
+                  </div>
+                </div>
+            </div>
+          </div>
+      </div>    
+
+
+    <!-- THIRD ROW: Scoring Row --> 
+    <div class="row">
+
+      <!-- 1 of 2 Columns: Left Column = Target/Computer Number -->
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Target Number</h3>
+          </div>
+        <div id="target-number" class="panel-body">
+                  INSERT targetNumber
+        </div>
+        </div>
+      </div>  
+
+      <!-- 2 of 2 Columns: Right Column = User/Guess Number -->        
+       <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Your Number</h3>
+          </div>
+          <div id="user-number" class="panel-body">
+                    INSERT userNumber
+          </div>
+        </div>
+      </div>  
+ 
+
+    </div>
+
+    <!-- FOURTH ROW: Win/Loss Row --> 
+    <div class="row">
+
+      <!-- 1 of 2 Columns: Left Column = Wins Number -->
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <h4 style="margin-left: 10px">Wins: <span id="wins"></span></h4>
+        </div>  
+      </div>    
+
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <h4 style="margin-left: 10px">Losses: <span id="losses"></span></h4>
+        </div>  
+      </div>    
+    </div>   
+
+  </div>   
+
+
+  <script type="text/javascript">
+
+  // INITIALIZE VARIABLES
+  // 
+
+  var blueCounter = 0;
+  var brownCounter = 0;
+  var pinkCounter = 0;
+  var greenCounter = 0;
+
+  // var blueValue = 5;
+  // var brownValue = 10;
+  // var pinkValue = 15;
+  // var greenValue = 20;
+
+  var userNumber = 0;
+  var targetNumber = 100;
+
+  var totalWins = 0;
+  var totalLosses = 0;
+
+  // Insert Game Stats
+  $("#user-number").text(userNumber);
+  $("#target-number").text(targetNumber);
+  $("#wins").text(totalWins);
+  $("#losses").text(totalLosses);
+
+
+  // STARTNEW FUNCTION TO RE-INITIALIZE CRYSTAL VALUES & TARGET NUMBER
+  // 
+
+  startNew();
+
+  function startNew() {
+  var blueCounter = 0;
+  var brownCounter = 0;
+  var pinkCounter = 0;
+  var greenCounter = 0;
+  var blueValue = Math.floor(Math.random() * 10) + 1;
+  var brownValue = Math.floor(Math.random() * 10) + 1;
+  var pinkValue = Math.floor(Math.random() * 10) + 1;
+  var greenValue = Math.floor(Math.random() * 10) + 1;
+  console.log(blueValue);
+  console.log(brownValue);
+  console.log(pinkValue);
+  console.log(greenValue);
+  var userNumber = 0;
+  var targetNumber = ((Math.floor(Math.random() * 3) + 1)*blueValue) + ((Math.floor(Math.random() * 3) + 1)*brownValue) + ((Math.floor(Math.random() * 3) + 1)*pinkValue) + ((Math.floor(Math.random() * 3) + 1)*greenValue);
+  console.log(targetNumber);
+
+  $("#user-number").text(userNumber);
+  $("#target-number").text(targetNumber);
+  }
+
+
+
+
+
+  // CLICK EVENTS (CRYSTALS AND GAME RESET)
+  // 
+
+  // On-CLick event for blue button
+  $("#blue").on("click", function() {
+    // console.log(startNew.blueValue);
+    blueCounter += startNew.blueValue;
+    userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
+    $("#user-number").text(userNumber);
+    // Clicking the button triggers an alert message.
+    alert("You clicked this crystal " + blueCounter + " times!");
+    if (userNumber === targetNumber) {
+      // If the numbers match we'll celebrate the user's win.
+      totalWins += 1;
+      $("#wins").text(totalWins);
+      alert("You win!");
+      // startNew GAME FUNCTION
+    } else if (userNumber > targetNumber) {
+      totalLosses += 1;
+    $("#losses").text(totalLosses);
+      alert("You Lose!");
+      // startNew GAME FUNCTION
+
+    }
+
+  });
+
+  // On-CLick event for brown button
+  $("#brown").on("click", function() {
+    brownCounter += brownValue;
+    console.log(brownCounter);
+    userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
+    $("#user-number").text(userNumber);
+    // Clicking the button triggers an alert message.
+    alert("You clicked this crystal " + brownCounter + " times!");
+    if (userNumber === targetNumber) {
+      // If the numbers match we'll celebrate the user's win.
+      totalWins += 1;
+      $("#wins").text(totalWins);
+      alert("You win!");
+      // startNew GAME FUNCTION
+    } else if (userNumber > targetNumber) {
+      totalLosses += 1;
+    $("#losses").text(totalLosses);
+      alert("You Lose!");
+      // startNew GAME FUNCTION
+
+    }
+  });
+
+  // On-CLick event for pink button
+  $("#pink").on("click", function() {
+    pinkCounter += pinkValue;
+    userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
+    $("#user-number").text(userNumber);    
+    // Clicking the button triggers an alert message.
+    alert("You clicked this crystal " + pinkCounter + " times!");
+    if (userNumber === targetNumber) {
+      // If the numbers match we'll celebrate the user's win.
+      totalWins += 1;
+      $("#wins").text(totalWins);
+      alert("You win!");
+      // startNew GAME FUNCTION
+    } else if (userNumber > targetNumber) {
+      totalLosses += 1;
+    $("#losses").text(totalLosses);
+      alert("You Lose!");
+      // startNew GAME FUNCTION
+
+    }
+  });
+
+  // On-CLick event for green button
+  $("#green").on("click", function() {
+    greenCounter += greenValue;
+    userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
+    $("#user-number").text(userNumber);    
+    // Clicking the button triggers an alert message.
+    alert("You clicked this crystal " + greenCounter + " times!");
+    if (userNumber === targetNumber) {
+      // If the numbers match we'll celebrate the user's win.
+      totalWins += 1;
+      $("#wins").text(totalWins);
+      alert("You win!");
+      // startNew GAME FUNCTION
+    } else if (userNumber > targetNumber) {
+      totalLosses += 1;
+    $("#losses").text(totalLosses);
+      alert("You Lose!");
+      // startNew GAME FUNCTION
+
+    }
+  });
+
+
+    // On-CLick event for Game Reset
+  $("#reset").on("click", function() {
+
+  var totalWins = 0;
+  var totalLosses = 0;
+  $("#wins").text(totalWins);
+  $("#losses").text(totalLosses);
+  startNew();
+  });
+
+  </script>
+
+
+
+    
+  </body>
+</html>
