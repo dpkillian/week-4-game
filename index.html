@@ -71,7 +71,6 @@
             <h3 class="panel-title">Target Number</h3>
           </div>
         <div id="target-number" class="panel-body">
-                  INSERT targetNumber
         </div>
         </div>
       </div>  
@@ -83,7 +82,6 @@
             <h3 class="panel-title">Your Number</h3>
           </div>
           <div id="user-number" class="panel-body">
-                    INSERT userNumber
           </div>
         </div>
       </div>  
@@ -116,18 +114,16 @@
   // INITIALIZE VARIABLES
   // 
 
-  var blueCounter = 0;
-  var brownCounter = 0;
-  var pinkCounter = 0;
-  var greenCounter = 0;
-
+  // var blueCounter = 0;
+  // var brownCounter = 0;
+  // var pinkCounter = 0;
+  // var greenCounter = 0;
   // var blueValue = 5;
   // var brownValue = 10;
   // var pinkValue = 15;
   // var greenValue = 20;
-
   var userNumber = 0;
-  var targetNumber = 100;
+  var targetNumber = 0;
 
   var totalWins = 0;
   var totalLosses = 0;
@@ -145,20 +141,20 @@
   startNew();
 
   function startNew() {
-  var blueCounter = 0;
-  var brownCounter = 0;
-  var pinkCounter = 0;
-  var greenCounter = 0;
-  var blueValue = Math.floor(Math.random() * 10) + 1;
-  var brownValue = Math.floor(Math.random() * 10) + 1;
-  var pinkValue = Math.floor(Math.random() * 10) + 1;
-  var greenValue = Math.floor(Math.random() * 10) + 1;
+  blueCounter = 0;
+  brownCounter = 0;
+  pinkCounter = 0;
+  greenCounter = 0;
+  blueValue = Math.floor(Math.random() * 10) + 1;
+  brownValue = Math.floor(Math.random() * 10) + 1;
+  pinkValue = Math.floor(Math.random() * 10) + 1;
+  greenValue = Math.floor(Math.random() * 10) + 1;
   console.log(blueValue);
   console.log(brownValue);
   console.log(pinkValue);
   console.log(greenValue);
-  var userNumber = 0;
-  var targetNumber = ((Math.floor(Math.random() * 3) + 1)*blueValue) + ((Math.floor(Math.random() * 3) + 1)*brownValue) + ((Math.floor(Math.random() * 3) + 1)*pinkValue) + ((Math.floor(Math.random() * 3) + 1)*greenValue);
+  userNumber = 0;
+  targetNumber = ((Math.floor(Math.random() * 3) + 1)*blueValue) + ((Math.floor(Math.random() * 3) + 1)*brownValue) + ((Math.floor(Math.random() * 3) + 1)*pinkValue) + ((Math.floor(Math.random() * 3) + 1)*greenValue);
   console.log(targetNumber);
 
   $("#user-number").text(userNumber);
@@ -175,22 +171,23 @@
   // On-CLick event for blue button
   $("#blue").on("click", function() {
     // console.log(startNew.blueValue);
-    blueCounter += startNew.blueValue;
+    blueCounter += blueValue;
     userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
     $("#user-number").text(userNumber);
-    // Clicking the button triggers an alert message.
     alert("You clicked this crystal " + blueCounter + " times!");
+    // Check if User Matched Target Number (ie Win)
     if (userNumber === targetNumber) {
-      // If the numbers match we'll celebrate the user's win.
       totalWins += 1;
       $("#wins").text(totalWins);
       alert("You win!");
-      // startNew GAME FUNCTION
+      startNew();
+
+    // Check if User Overshot Target Number (ie Lose)
     } else if (userNumber > targetNumber) {
       totalLosses += 1;
     $("#losses").text(totalLosses);
       alert("You Lose!");
-      // startNew GAME FUNCTION
+      startNew();
 
     }
 
@@ -202,19 +199,21 @@
     console.log(brownCounter);
     userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
     $("#user-number").text(userNumber);
-    // Clicking the button triggers an alert message.
     alert("You clicked this crystal " + brownCounter + " times!");
+    // Check if User Matched Target Number (ie Win)
     if (userNumber === targetNumber) {
       // If the numbers match we'll celebrate the user's win.
       totalWins += 1;
       $("#wins").text(totalWins);
       alert("You win!");
-      // startNew GAME FUNCTION
+      startNew();
+
+    // Check if User Overshot Target Number (ie Lose)
     } else if (userNumber > targetNumber) {
       totalLosses += 1;
     $("#losses").text(totalLosses);
       alert("You Lose!");
-      // startNew GAME FUNCTION
+      startNew();
 
     }
   });
@@ -224,19 +223,21 @@
     pinkCounter += pinkValue;
     userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
     $("#user-number").text(userNumber);    
-    // Clicking the button triggers an alert message.
     alert("You clicked this crystal " + pinkCounter + " times!");
+    // Check if User Matched Target Number (ie Win)
     if (userNumber === targetNumber) {
       // If the numbers match we'll celebrate the user's win.
       totalWins += 1;
       $("#wins").text(totalWins);
       alert("You win!");
-      // startNew GAME FUNCTION
+      startNew();
+
+    // Check if User Overshot Target Number (ie Lose)
     } else if (userNumber > targetNumber) {
       totalLosses += 1;
     $("#losses").text(totalLosses);
       alert("You Lose!");
-      // startNew GAME FUNCTION
+      startNew();
 
     }
   });
@@ -246,19 +247,21 @@
     greenCounter += greenValue;
     userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
     $("#user-number").text(userNumber);    
-    // Clicking the button triggers an alert message.
     alert("You clicked this crystal " + greenCounter + " times!");
+    // Check if User Matched Target Number (ie Win)
     if (userNumber === targetNumber) {
       // If the numbers match we'll celebrate the user's win.
       totalWins += 1;
       $("#wins").text(totalWins);
       alert("You win!");
-      // startNew GAME FUNCTION
+      startNew();
+
+    // Check if User Overshot Target Number (ie Lose)
     } else if (userNumber > targetNumber) {
       totalLosses += 1;
     $("#losses").text(totalLosses);
       alert("You Lose!");
-      // startNew GAME FUNCTION
+      startNew();
 
     }
   });
