@@ -23,7 +23,7 @@
     <!-- FIRST ROW: "Crystal Collector" heading and instructions, with game reset button --> 
       <div class="jumbotron">
         <h2>Crystal Collector</h2>
-        <p>Crystal Collector is a game of skill that requires quick thinking.  At the beginning of the game, a random number is chosen by the computer.  You job is to match that number by clicking on the crystals.  Each crystal is given a number, each time you click on a crystal it adds a number to your total.  You win by clicking on the right combination of cystals to match the the target number chosen by the computer.</p>
+        <p>Crystal Collector is a game of skill that requires a nimble mind.  At the beginning of the game, a random number is chosen by the computer.  You job is to match that number by clicking on the crystals.  Each crystal is given a number, each time you click on a crystal it adds a number to your total.  You win by clicking on the right combination of cystals to match the the target number chosen by the computer.</p>
         <p><a class="btn btn-primary btn-lg" id="reset" href="#" role="button">Start New Game</a></p>
       </div>
 
@@ -114,14 +114,6 @@
   // INITIALIZE VARIABLES
   // 
 
-  // var blueCounter = 0;
-  // var brownCounter = 0;
-  // var pinkCounter = 0;
-  // var greenCounter = 0;
-  // var blueValue = 5;
-  // var brownValue = 10;
-  // var pinkValue = 15;
-  // var greenValue = 20;
   var userNumber = 0;
   var targetNumber = 0;
 
@@ -174,7 +166,6 @@
     blueCounter += blueValue;
     userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
     $("#user-number").text(userNumber);
-    alert("You clicked this crystal " + blueCounter + " times!");
     // Check if User Matched Target Number (ie Win)
     if (userNumber === targetNumber) {
       totalWins += 1;
@@ -199,7 +190,6 @@
     console.log(brownCounter);
     userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
     $("#user-number").text(userNumber);
-    alert("You clicked this crystal " + brownCounter + " times!");
     // Check if User Matched Target Number (ie Win)
     if (userNumber === targetNumber) {
       // If the numbers match we'll celebrate the user's win.
@@ -223,7 +213,6 @@
     pinkCounter += pinkValue;
     userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
     $("#user-number").text(userNumber);    
-    alert("You clicked this crystal " + pinkCounter + " times!");
     // Check if User Matched Target Number (ie Win)
     if (userNumber === targetNumber) {
       // If the numbers match we'll celebrate the user's win.
@@ -247,7 +236,6 @@
     greenCounter += greenValue;
     userNumber = blueCounter + brownCounter + pinkCounter + greenCounter;
     $("#user-number").text(userNumber);    
-    alert("You clicked this crystal " + greenCounter + " times!");
     // Check if User Matched Target Number (ie Win)
     if (userNumber === targetNumber) {
       // If the numbers match we'll celebrate the user's win.
